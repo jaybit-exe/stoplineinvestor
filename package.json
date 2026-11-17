@@ -1,0 +1,13 @@
+{
+  "name": "stoplineinvestor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stopline: free trading risk calculators and prop firm rule tools, served from Cloudflare Workers",
+  "scripts": {
+    "dev": "wrangler dev",
+    "serve": "python3 tools/serve.py site 8811",
+    "test": "python3 tests/test.py",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4" }
+}
