@@ -1,0 +1,43 @@
+/* Stopline /news section. Loaded only on news pages, after style.css. Uses the site's existing colour variables. */
+.crumbs{font-size:14px;font-weight:700;color:var(--mut);margin:0 0 10px}
+.crumbs a{color:var(--mut)}
+.nmeta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;font-weight:700;color:var(--mut);margin:6px 0 14px}
+.tc .nmeta{margin:0 0 8px}
+.ntag{display:inline-block;border:2px solid var(--line);border-radius:999px;padding:1px 10px;font-size:12px;font-weight:800;letter-spacing:.02em;background:var(--field);color:var(--ink);text-transform:uppercase}
+.ntag.restrict{background:var(--yel);color:#14213d}
+.ntag.rule{background:var(--org);color:#14213d}
+.ntag.new{background:var(--green);color:#fff}
+.ntag.cal{background:var(--acc);color:var(--accink)}
+.ncard b,.calbanner b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.2}
+.ncard p,.calbanner p{margin-top:6px}
+.calbanner{margin-bottom:8px}
+.nlist{grid-template-columns:1fr}
+@media (min-width:700px){.nlist{grid-template-columns:1fr 1fr}.nlist .ncard:first-child{grid-column:1/-1}}
+.calcgrid{display:grid;gap:12px;grid-template-columns:1fr;margin:14px 0 6px}
+@media (min-width:640px){.calcgrid{grid-template-columns:1fr 1fr}}
+.calcgrid .tc b{font-size:17px}
+.calcgrid .tc{padding:12px 14px}
+.prose .calcgrid a{color:var(--ink)}
+.prose ul.srcs{list-style:none;padding:0;margin:8px 0}
+.prose ul.srcs li{padding:8px 0;border-bottom:1px solid var(--track)}
+.prose ul.srcs li:last-child{border:0}
+.prose .fine{max-width:68ch}
+.calday h2{font-size:20px}
+.calday td.tm{white-space:nowrap;font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:600}
+.calday td a{color:var(--acc)}
+.prose td .fine{display:block;margin-top:2px}
+.imp{display:inline-block;min-width:58px;text-align:center;border:2px solid var(--line);border-radius:8px;padding:1px 8px;font-size:13px;font-weight:800}
+.imp-high{background:var(--red);color:#fff;border-color:var(--red)}
+.imp-medium{background:var(--org);color:#14213d;border-color:var(--org)}
+.imp-low{background:var(--field);color:var(--ink)}
+.imp-thin{background:var(--yel);color:#14213d;border-color:var(--yel)}
+.imp-na{background:transparent;color:var(--mut);border-style:dashed}
+@media (max-width:640px){
+.calday table{min-width:0;width:100%}.calday thead{display:none}
+.calday tbody,.calday tr,.calday td{display:block}
+.calday tr{padding:10px 0;border-bottom:2px solid var(--track)}.calday tr:last-child{border-bottom:0}
+.calday.prose td{border:0;padding:2px 0}
+.calday td.tm{font-size:15px;color:var(--acc)}
+.calday td:nth-child(3),.calday td:nth-child(4){display:inline-block;margin:6px 16px 0 0}
+.calday td:nth-child(3)::before{content:"ES / NQ ";font-weight:800;font-size:13px;color:var(--mut)}
+.calday td:nth-child(4)::before{content:"BTC ";font-weight:800;font-size:13px;color:var(--mut)}}
