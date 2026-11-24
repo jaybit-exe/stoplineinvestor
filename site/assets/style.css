@@ -194,3 +194,22 @@ table.cmp td.srcs a{font-weight:700}
 .fcard .calcs,.fcard .vf{font-size:13px;margin:8px 0 0}
 .more a[aria-current=page]{color:var(--acc)}
 @media (min-width:900px){body.wide .layout{grid-template-columns:minmax(0,1fr)}body.wide aside{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}}
+/* learn: candlestick diagrams */
+.prose figure.cdl{margin:12px 0 16px;max-width:68ch}
+.cdl svg,.pcard svg{display:block;width:100%;height:auto;background:var(--field);border:2px solid var(--track);border-radius:10px}
+.cdl figcaption{color:var(--mut);font-size:14px;margin-top:6px}
+.cdl .wk,.pcard .wk{stroke-width:2}
+.cdl .up rect,.pcard .up rect{fill:var(--card);stroke:var(--green);stroke-width:2}
+.cdl .up .wk,.pcard .up .wk{stroke:var(--green)}
+.cdl .dn rect,.pcard .dn rect{fill:var(--red);stroke:var(--red);stroke-width:2}
+.cdl .dn .wk,.pcard .dn .wk{stroke:var(--red)}
+.pcard .ctx{opacity:.35}
+.cdl text,.pcard text{fill:var(--ink);font:600 11px "IBM Plex Mono",monospace}
+.cdl text.m,.pcard text.m{fill:var(--mut);font-weight:500}
+.cdl text.b{font:800 12px Figtree,system-ui,sans-serif}
+.cdl text.big{font:800 28px Figtree,system-ui,sans-serif}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:10px 0 16px}
+.pcard{border:2px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
+.pcard h3{margin:0 0 8px;font-size:18px}
+.pcard p{font-size:15px;margin:8px 0 0}
+.pcard svg{max-height:170px}
