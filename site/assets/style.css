@@ -4,7 +4,7 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--bg:#14142b;--card:#1f1f3d;--ink:#f1f1ff;--mut:#a3a3cc;--line:#3b3b6b;--shadow:#5b3df5;--track:#2d2d52;--field:#171733;--acc:#8b74ff;--accink:#14142b}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Figtree,"Figtree Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
 a{color:inherit}
 .top{background:var(--card);border-bottom:2px solid var(--line)}
 .bar{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -12,7 +12,7 @@ a{color:inherit}
 nav{display:flex;align-items:center;gap:4px;flex:1;min-width:0}
 nav a{text-decoration:none;font-weight:700;font-size:15px;padding:4px 10px;border-radius:999px;white-space:nowrap;color:var(--mut)}
 nav a.on,nav a:hover{background:var(--acc);color:var(--accink)}
-.chips{display:flex;gap:8px}
+.chips{display:flex;gap:8px}.chips:empty{display:none}
 .chip{border:2px solid var(--line);background:var(--field);border-radius:999px;padding:2px 10px;font-weight:700;font-size:14px;white-space:nowrap}
 .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 40px}
 .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
@@ -87,17 +87,17 @@ button.chip:hover{background:var(--acc);color:var(--accink)}
 :root{--bg:#f2ead8;--card:#fffaf0;--ink:#14213d;--mut:#5b6478;--line:#14213d;--shadow:#e8452c;--track:#e5dcc4;--field:#f7f0df;--acc:#e8452c;--accink:#fffaf0;--grid:rgba(20,33,61,.07)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1326;--card:#151e38;--ink:#f2ead8;--mut:#a9b2c9;--line:#e9e1cd;--shadow:#e8452c;--track:#243152;--field:#0f1830;--acc:#ff6b4a;--accink:#0d1326;--grid:rgba(242,234,216,.055)}}
 :root[data-theme="dark"]{--bg:#0d1326;--card:#151e38;--ink:#f2ead8;--mut:#a9b2c9;--line:#e9e1cd;--shadow:#e8452c;--track:#243152;--field:#0f1830;--acc:#ff6b4a;--accink:#0d1326;--grid:rgba(242,234,216,.055)}
-body{font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
-h1,h2,.logo{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto}
+body{font-family:Figtree,"Figtree Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+h1,h2,.logo{font-family:Fraunces,"Fraunces Fallback",Georgia,serif;font-optical-sizing:auto}
 h1{font-weight:800;letter-spacing:-.025em}
 .logo{font-weight:800;font-size:27px;letter-spacing:-.03em}
 .logo::after{content:"";display:inline-block;width:.55em;height:4px;background:var(--acc);margin-left:3px;border-radius:2px}
-.n,.stat b,.zone b,input[type=number],input[type=text],select,code,.chip{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+.n,.stat b,.zone b,input[type=number],input[type=text],select,code,.chip{font-family:"IBM Plex Mono","IBM Plex Mono Fallback",ui-monospace,Menlo,monospace}
 .stat b,.zone b{font-weight:600}
 .top{background:var(--card)}
 .tape{background:var(--card)}
 button.lock{box-shadow:3px 3px 0 var(--line)}
-.grade{transform:rotate(-4deg);font-family:Fraunces,Georgia,serif}
+.grade{transform:rotate(-4deg);font-family:Fraunces,"Fraunces Fallback",Georgia,serif}
 .grade.stamp{animation:stamp .5s cubic-bezier(.2,1.5,.4,1)}
 @keyframes stamp{0%{transform:scale(1.9) rotate(-16deg);opacity:0}60%{transform:scale(.9) rotate(-2deg);opacity:1}100%{transform:rotate(-4deg)}}
 .hero{display:grid;gap:26px;align-items:center;margin:6px 0 30px}
@@ -112,7 +112,7 @@ button.lock{box-shadow:3px 3px 0 var(--line)}
 .stopsvg .px{stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:700;stroke-dashoffset:700;animation:draw 2.2s .3s ease-out forwards}
 .stopsvg .stop{stroke:var(--acc);stroke-width:2.5;stroke-dasharray:7 6;animation:blink 2.4s 2.5s infinite}
 .stopsvg .tag{fill:var(--acc)}
-.stopsvg text{fill:var(--ink);font:600 11px "IBM Plex Mono",monospace}
+.stopsvg text{fill:var(--ink);font:600 11px "IBM Plex Mono","IBM Plex Mono Fallback",monospace}
 .stopsvg .tagt{fill:var(--accink)}
 .stopsvg .ent{fill:var(--card);stroke:var(--ink);stroke-width:2.5}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -120,9 +120,9 @@ button.lock{box-shadow:3px 3px 0 var(--line)}
 .why{display:grid;gap:12px;margin-bottom:8px}
 @media (min-width:700px){.why{grid-template-columns:repeat(3,1fr)}}
 .why>div{border-left:4px solid var(--acc);padding:2px 0 2px 12px}
-.why b{font-family:Fraunces,Georgia,serif;font-size:19px}
+.why b{font-family:Fraunces,"Fraunces Fallback",Georgia,serif;font-size:19px}
 .why p{margin:0;color:var(--mut);font-size:15px}
-.sec{font-family:Fraunces,Georgia,serif;font-size:28px;margin:30px 0 12px}
+.sec{font-family:Fraunces,"Fraunces Fallback",Georgia,serif;font-size:28px;margin:30px 0 12px}
 .prose h2{font-size:22px;margin:22px 0 6px}
 .prose h2:first-child{margin-top:0}
 .prose p,.prose dd{max-width:68ch;color:var(--ink)}
@@ -140,12 +140,11 @@ button.lock{box-shadow:3px 3px 0 var(--line)}
 /* mobile header fix */
 .menu summary{white-space:nowrap}
 @media (max-width:640px){.bar{gap:8px 10px;padding:10px 14px}.logo{font-size:24px}.chips{margin-left:auto;gap:5px}.chip,button.chip{font-size:11px;padding:2px 7px;border-width:1.5px}.logo{font-size:22px}nav{order:3;flex:1 1 100%;justify-content:space-between;gap:2px}nav a,.menu summary{font-size:15px;padding:6px 10px}}
-@media (max-width:360px){.chip#streak{display:none}}
 .prose .tw{overflow-x:auto;margin:10px 0 14px}
 .prose table{border-collapse:collapse;font-size:15px;min-width:100%}
 .prose th,.prose td{border:1px solid var(--track);padding:7px 10px;text-align:left;vertical-align:top}
 .prose th{background:var(--field);font-weight:800}
-.prose td.num,.prose th.num{text-align:right;font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.prose td.num,.prose th.num{text-align:right;font-family:'IBM Plex Mono','IBM Plex Mono Fallback',monospace;white-space:nowrap}
 .prose ul{max-width:68ch;padding-left:20px}
 .prose li{margin:4px 0}
 .prose .checked{border-left:4px solid var(--acc);background:var(--field);padding:10px 14px;border-radius:8px;max-width:68ch}
@@ -204,12 +203,21 @@ table.cmp td.srcs a{font-weight:700}
 .cdl .dn rect,.pcard .dn rect{fill:var(--red);stroke:var(--red);stroke-width:2}
 .cdl .dn .wk,.pcard .dn .wk{stroke:var(--red)}
 .pcard .ctx{opacity:.35}
-.cdl text,.pcard text{fill:var(--ink);font:600 11px "IBM Plex Mono",monospace}
+.cdl text,.pcard text{fill:var(--ink);font:600 11px "IBM Plex Mono","IBM Plex Mono Fallback",monospace}
 .cdl text.m,.pcard text.m{fill:var(--mut);font-weight:500}
-.cdl text.b{font:800 12px Figtree,system-ui,sans-serif}
-.cdl text.big{font:800 28px Figtree,system-ui,sans-serif}
+.cdl text.b{font:800 12px Figtree,"Figtree Fallback",system-ui,sans-serif}
+.cdl text.big{font:800 28px Figtree,"Figtree Fallback",system-ui,sans-serif}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:10px 0 16px}
 .pcard{border:2px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
 .pcard h3{margin:0 0 8px;font-size:18px}
 .pcard p{font-size:15px;margin:8px 0 0}
 .pcard svg{max-height:170px}
+
+/* Metric-adjusted fallbacks so system fonts hold the layout until Figtree, Fraunces and IBM Plex Mono load. */
+@font-face{font-family:"Figtree Fallback";src:local("Arial"),local("Helvetica Neue"),local("Helvetica");size-adjust:100%;ascent-override:93%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia"),local("Times New Roman");size-adjust:107%;ascent-override:88%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"IBM Plex Mono Fallback";src:local("Menlo"),local("Courier New"),local("Courier");size-adjust:100%;ascent-override:102%;descent-override:27%;line-gap-override:0%}
+.swipe-hint{display:none;margin:0 0 10px;color:var(--mut);font-size:14px;font-weight:700}
+@media (max-width:899px){.swipe-hint{display:block}}
+label[for="l"]{white-space:normal;overflow:visible;text-overflow:unset}
+select#l{text-overflow:clip}

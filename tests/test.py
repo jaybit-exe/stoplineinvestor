@@ -45,6 +45,16 @@ with sync_playwright() as p:
     res["cases"].append({"name":"Dropdown: TPT 100K resets balances to $100,000","got":s,"pass":s.get("Liquidation level")=="$97,000" and s.get("Room left")=="$3,000"})
     pg.goto(B+"/prop-target/"); pg.select_option('#preset','tradeify-select-150k'); s=stats(pg)
     res["cases"].append({"name":"Dropdown: Tradeify Select 150K target","got":{"t":pg.input_value('#t'),**s},"pass":pg.input_value('#t')=='9000'})
+    # Sign-in chip must not collide with the account-size input (id=acct).
+    pg.goto(B+"/position-size/")
+    pg.wait_for_selector("#account-btn", timeout=8000)
+    pg.wait_for_function("document.querySelector('#size')&&document.querySelector('#size').innerText!=='-'")
+    collision=pg.evaluate("()=>{const el=document.getElementById('acct');return el?{tag:el.tagName,type:el.type,id:el.id}:null}")
+    pg.fill("#acct","")
+    pg.fill("#acct","20000")
+    pg.wait_for_function("document.querySelector('#size')&&document.querySelector('#size').innerText.replace(/,/g,'')==='100'")
+    size=pg.inner_text("#size"); grade=pg.inner_text("#grade")
+    res["cases"].append({"name":"Position size still computes after Sign in chip loads","got":{"collision":collision,"size":size,"grade":grade},"pass":collision and collision["tag"]=="INPUT" and size.replace(",","")=="100" and grade=="S"})
     res["calc_pageerrors"]=perr
     br.close()
 json.dump(res,open('tests/results.json','w'),indent=1)

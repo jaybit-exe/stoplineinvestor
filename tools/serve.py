@@ -6,7 +6,13 @@ class H(http.server.SimpleHTTPRequestHandler):
     def do_GET(s):
         path = s.path.split('?')[0]
         if path.startswith('/api/'):
-            b = json.dumps({"clientId": ""}).encode(); s.send_response(200); s.send_header('Content-Type','application/json'); s.end_headers(); s.wfile.write(b); return
+            if path.rstrip('/') == '/api/config':
+                body = {"clientId": "test-preview-client"}
+            elif path.rstrip('/') == '/api/me':
+                body = {"email": None}
+            else:
+                body = {"error": "not available on the local preview server"}
+            b = json.dumps(body).encode(); s.send_response(200); s.send_header('Content-Type','application/json'); s.end_headers(); s.wfile.write(b); return
         fp = os.path.join(ROOT, path.lstrip('/'))
         if os.path.isdir(fp) and not path.endswith('/'):
             s.send_response(307); s.send_header('Location', path + '/'); s.end_headers(); return

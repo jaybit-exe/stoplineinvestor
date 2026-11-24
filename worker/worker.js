@@ -5,10 +5,16 @@ const SESSION_DAYS = 30;
 const MAX_DATA = 256 * 1024; // 256 KB per user
 let jwksCache = { keys: null, exp: 0 };
 
+const HSTS = 'max-age=31536000; includeSubDomains';
 const json = (body, status = 200, headers = {}) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers },
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store',
+      'Strict-Transport-Security': HSTS,
+      ...headers,
+    },
   });
 
 const b64urlToBytes = (s) => {
@@ -104,9 +110,9 @@ export default {
       }
 
       const user = await currentUser(req, env);
-      if (!user) return json({ error: 'not signed in' }, 401);
+      if (path === 'me' && method === 'GET') return json({ email: user ? user.email : null });
 
-      if (path === 'me' && method === 'GET') return json({ email: user.email });
+      if (!user) return json({ error: 'not signed in' }, 401);
 
       if (path === 'logout' && method === 'POST') {
         await env.DB.prepare('DELETE FROM sessions WHERE id = ?').bind(user.sid).run();
