@@ -57,3 +57,25 @@
 .ttbanner{margin-bottom:8px}
 .ttbanner b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.2}
 .ttbanner p{margin-top:6px}
+
+/* Trade Tuesday week-ahead blocks (every edition). Not used on the /news/calendar/ tables. */
+.moves-glance{max-width:68ch;margin:0 0 14px}
+.moves-glance li{margin:6px 0}
+.moveday h2{font-size:20px}
+.moveday td.tm{white-space:nowrap;font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:600}
+.moveday td a{color:var(--acc)}
+.moveday + .moveday{margin-top:8px}
+@media (max-width:640px){
+.moveday table{min-width:0;width:100%}.moveday thead{display:none}
+.moveday tbody,.moveday tr,.moveday td{display:block}
+.moveday tr{padding:10px 0;border-bottom:2px solid var(--track)}.moveday tr:last-child{border-bottom:0}
+.moveday.prose td{border:0;padding:2px 0}
+.moveday td.tm{font-size:15px;color:var(--acc)}
+.moveday td:nth-child(3)::before{content:"For your risk ";font-weight:800;font-size:13px;color:var(--mut)}}
+.risknote{border-left:4px solid var(--red);background:var(--field);padding:12px 16px;border-radius:8px;max-width:68ch;margin:14px 0}
+.risknote h3{margin:0 0 6px;font-size:18px}
+.firmweek{max-width:68ch}
+.elsewhere{border:2px solid var(--track);background:var(--field);border-radius:12px;padding:12px 16px;max-width:68ch;margin:14px 0 8px}
+.elsewhere h3{margin:0 0 6px;font-size:18px}
+.elsewhere ol{margin:8px 0 0;padding-left:22px;max-width:68ch}
+.elsewhere li{margin:8px 0}
