@@ -7,6 +7,7 @@
 .ntag.restrict{background:var(--yel);color:#14213d}
 .ntag.rule{background:var(--org);color:#14213d}
 .ntag.new{background:var(--green);color:#fff}
+.ntag.brief{background:var(--red);color:#fff}
 .ntag.cal{background:var(--acc);color:var(--accink)}
 .ncard b,.calbanner b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.2}
 .ncard p,.calbanner p{margin-top:6px}
@@ -41,3 +42,18 @@
 .calday td:nth-child(3),.calday td:nth-child(4){display:inline-block;margin:6px 16px 0 0}
 .calday td:nth-child(3)::before{content:"ES / NQ ";font-weight:800;font-size:13px;color:var(--mut)}
 .calday td:nth-child(4)::before{content:"BTC ";font-weight:800;font-size:13px;color:var(--mut)}}
+
+.mkt td:first-child{font-weight:800;white-space:nowrap}.mkt td{font-variant-numeric:tabular-nums}
+.mkt td.dn{color:var(--red);font-weight:800}
+@media (max-width:640px){
+.mkt table{min-width:0;width:100%}.mkt thead{display:none}
+.mkt tbody,.mkt tr,.mkt td{display:block}
+.mkt tr{padding:10px 0;border-bottom:2px solid var(--track)}.mkt tr:last-child{border-bottom:0}
+.mkt.prose td{border:0;padding:2px 0}
+.mkt td[data-l]::before{content:attr(data-l) " ";font-weight:800;font-size:13px;color:var(--mut)}}
+
+.mkt td.up{color:var(--green);font-weight:800}
+.ntag.tt{background:var(--red);color:#fff}
+.ttbanner{margin-bottom:8px}
+.ttbanner b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.2}
+.ttbanner p{margin-top:6px}
