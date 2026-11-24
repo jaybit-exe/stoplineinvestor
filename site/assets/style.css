@@ -12,7 +12,7 @@ a{color:inherit}
 nav{display:flex;align-items:center;gap:4px;flex:1;min-width:0}
 nav a{text-decoration:none;font-weight:700;font-size:15px;padding:4px 10px;border-radius:999px;white-space:nowrap;color:var(--mut)}
 nav a.on,nav a:hover{background:var(--acc);color:var(--accink)}
-.chips{display:flex;gap:8px}
+.chips{display:flex;gap:8px}.chips:empty{display:none}
 .chip{border:2px solid var(--line);background:var(--field);border-radius:999px;padding:2px 10px;font-weight:700;font-size:14px;white-space:nowrap}
 .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 40px}
 .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
@@ -140,7 +140,6 @@ button.lock{box-shadow:3px 3px 0 var(--line)}
 /* mobile header fix */
 .menu summary{white-space:nowrap}
 @media (max-width:640px){.bar{gap:8px 10px;padding:10px 14px}.logo{font-size:24px}.chips{margin-left:auto;gap:5px}.chip,button.chip{font-size:11px;padding:2px 7px;border-width:1.5px}.logo{font-size:22px}nav{order:3;flex:1 1 100%;justify-content:space-between;gap:2px}nav a,.menu summary{font-size:15px;padding:6px 10px}}
-@media (max-width:360px){.chip#streak{display:none}}
 .prose .tw{overflow-x:auto;margin:10px 0 14px}
 .prose table{border-collapse:collapse;font-size:15px;min-width:100%}
 .prose th,.prose td{border:1px solid var(--track);padding:7px 10px;text-align:left;vertical-align:top}

@@ -72,14 +72,11 @@ const stat=([k,x])=>'<div class="stat"><span>'+k+'</span><b>'+x+'</b></div>';
 const today=()=>new Date().toDateString();
 
 function home(){
-  const q=S.q===today();
-  return '<section class="hero"><div><h1>Draw the line <em>before</em> you trade.</h1><p class="lead">Free risk calculators for stocks, options, futures and prop firm accounts. Size the trade, grade the plan, earn discipline XP. Everything runs in your browser.</p><p class="cta"><a class="btn" href="/position-size/">Size a trade</a><a class="btn alt" href="/learn/">Read the guides</a></p></div><svg class="stopsvg" viewBox="0 0 360 220" role="img" aria-label="Price chart with an entry marker and a stop line"><path class="px" d="M10 150 L50 120 L80 140 L120 90 L160 110 L200 60 L240 80 L280 40 L320 70 L350 30" fill="none" stroke-width="3.5"/><line class="stop" x1="10" x2="350" y1="172" y2="172"/><rect class="tag" x="250" y="176" width="98" height="22" rx="5"/><text class="tagt" x="258" y="191">STOP $48.00</text><circle class="ent" cx="120" cy="90" r="7"/><text x="86" y="76">ENTRY $50</text></svg></section>'
-  +'<div class="why"><div><b>No signup</b><p>Open a tool and use it.</p></div><div><b>Your numbers stay put</b><p>Math runs in your browser.</p></div><div><b>Plans get graded</b><p>Stamp a plan S to D and level up.</p></div></div>'
+  return '<section class="hero"><div><h1>Draw the line <em>before</em> you trade.</h1><p class="lead">Free risk calculators for stocks, options, futures and prop firm accounts. Size the trade and grade the plan. Everything runs in your browser.</p><p class="cta"><a class="btn" href="/position-size/">Size a trade</a><a class="btn alt" href="/learn/">Read the guides</a></p></div><svg class="stopsvg" viewBox="0 0 360 220" role="img" aria-label="Price chart with an entry marker and a stop line"><path class="px" d="M10 150 L50 120 L80 140 L120 90 L160 110 L200 60 L240 80 L280 40 L320 70 L350 30" fill="none" stroke-width="3.5"/><line class="stop" x1="10" x2="350" y1="172" y2="172"/><rect class="tag" x="250" y="176" width="98" height="22" rx="5"/><text class="tagt" x="258" y="191">STOP $48.00</text><circle class="ent" cx="120" cy="90" r="7"/><text x="86" y="76">ENTRY $50</text></svg></section>'
+  +'<div class="why"><div><b>No account needed</b><p>Open a tool and use it.</p></div><div><b>Your numbers stay put</b><p>Math runs in your browser.</p></div><div><b>Plans get graded</b><p>Stamp a plan S to D against a simple checklist.</p></div></div>'
   +'<h2 class="sec">The toolkit</h2>'
   +'<div class="tools">'+T.map(t=>'<a class="card tc" href="/'+t.id+'/"><b>'+t.n+'</b><p>'+t.d+'</p></a>').join('')+'</div>'
-  +ad()+'<div class="two"><section class="card"><h2>Your progress</h2><div>Level '+(Math.floor(S.xp/100)+1)+', '+(S.xp%100)+' / 100 XP</div><div class="xp"><i style="width:'+(S.xp%100)+'%"></i></div><div class="badges">'+Object.keys(BADGES).map(k=>'<span class="badge '+(S.badges.includes(k)?'':'off')+'">'+BADGES[k][0]+' '+BADGES[k][1]+'</span>').join('')+'</div></section>'
-  +'<section class="card"><h2>Daily quest</h2><ul class="checks"><li class="'+(q?'ok':'')+'"><span class="m">'+(q?'✓':'')+'</span>Lock in a position size plan graded A or better</li></ul><a href="/position-size/"><b>Start the quest</b></a></section></div>'
-  +'<h2 class="sec">From the guides</h2><div class="tools"><a class="card tc" href="/learn/how-to-read-candlesticks/"><b>How to read candlesticks</b><p>Open, high, low and close, and why regular-hours and overnight charts differ.</p></a><a class="card tc" href="/learn/candlestick-patterns-explained/"><b>Candlestick patterns and the evidence</b><p>The basic patterns, and what academic tests actually found.</p></a><a class="card tc" href="/learn/trading-indicators-explained/"><b>Trading indicators explained</b><p>Moving averages, VWAP, RSI, MACD, ATR and how to size with ATR.</p></a><a class="card tc" href="/learn/position-sizing-guide/"><b>The 1% rule: how to size a trade</b><p>Pick your risk, then let the stop decide the size.</p></a><a class="card tc" href="/learn/risk-of-ruin-explained/"><b>Risk of ruin explained</b><p>Why small risk survives losing streaks.</p></a></div>';
+  +ad()+'<h2 class="sec">From the guides</h2><div class="tools"><a class="card tc" href="/learn/how-to-read-candlesticks/"><b>How to read candlesticks</b><p>Open, high, low and close, and why regular-hours and overnight charts differ.</p></a><a class="card tc" href="/learn/candlestick-patterns-explained/"><b>Candlestick patterns and the evidence</b><p>The basic patterns, and what academic tests actually found.</p></a><a class="card tc" href="/learn/trading-indicators-explained/"><b>Trading indicators explained</b><p>Moving averages, VWAP, RSI, MACD, ATR and how to size with ATR.</p></a><a class="card tc" href="/learn/position-sizing-guide/"><b>The 1% rule: how to size a trade</b><p>Pick your risk, then let the stop decide the size.</p></a><a class="card tc" href="/learn/risk-of-ruin-explained/"><b>Risk of ruin explained</b><p>Why small risk survives losing streaks.</p></a></div>';
 }
 function about(){
   return '<div class="layout"><main><h1>About Stopline</h1><section class="card"><p class="t">Stopline builds simple risk calculators for traders. Nothing here is investment advice, and past results do not predict future ones.</p><p class="t">Privacy: calculators run in your browser and the numbers you enter are not sent to any server. Your XP, streak and journal are saved in your browser, and synced to our database only if you choose to sign in. If ads are shown, advertisers may use cookies, and this page should be updated with the full details of your ad provider.</p></section></main><aside>'+toolsCard()+'</aside></div>';
@@ -135,17 +132,14 @@ function bindPos(){
   ['acct','mult','entry','stop','target','risk'].forEach(id=>$(id).addEventListener('input',calc));
   $('lock').addEventListener('click',()=>{
     if(!cur)return;
-    const before=Math.floor(S.xp/100),gain=GRADE[cur.g][2];
+    const gain=GRADE[cur.g][2];
     S.xp+=gain;S.plans++;
     if(S.last!==today()){const y=new Date(Date.now()-864e5).toDateString();S.streak=S.last===y?S.streak+1:1;S.last=today()}
     if(cur.g==='S'||cur.g==='A')S.q=today();
     const earned=[],give=k=>{if(!S.badges.includes(k)){S.badges.push(k);earned.push(BADGES[k][1])}};
     give('first');if(cur.r<=2)give('safe');if(cur.rr!==null&&cur.rr>=2)give('two');if(S.streak>=3)give('streak3');if(S.xp>=200)give('lvl3');
     save();chips();
-    let m=gain>0?'+'+gain+' XP for a grade '+cur.g+' plan.':'Grade D earns no XP. Add a stop, trim your risk, or aim for a 2x target.';
-    if(Math.floor(S.xp/100)>before)m+=' Level up!';
-    if(earned.length)m+=' New badge: '+earned.join(', ')+'.';
-    $('toast').textContent=m;
+    $('toast').textContent='Grade '+cur.g+' plan locked.';
   });
   calc();
 }
@@ -193,14 +187,14 @@ function bindJrn(){
     if(L.length>500)L.shift();
     let m='Trade logged.';
     if(S.jd!==today()){S.jd=today();S.jc=0}
-    if(S.jc<3){S.jc++;S.xp+=5;m+=' +5 XP for journaling.'}
+    if(S.jc<3){S.jc++;S.xp+=5}
     if(S.last!==today()){const y=new Date(Date.now()-864e5).toDateString();S.streak=S.last===y?S.streak+1:1;S.last=today()}
-    if(L.length>=5&&!S.badges.includes('journal')){S.badges.push('journal');m+=' New badge: Journaled 5 trades.'}
+    if(L.length>=5&&!S.badges.includes('journal')){S.badges.push('journal')}
     sv();save();chips();draw();$('js').value=$('jp').value=$('jr').value='';$('toast').textContent=m;
   });
   draw();
 }
-function chips(){const lv=Math.floor(S.xp/100)+1;$('lvl').textContent='Lv '+lv+' '+['Paper Hands','Scout','Operator','Tactician','Risk Officer','Chief Risk Officer'][Math.min(lv-1,5)];$('streak').textContent=S.streak+' day streak'}
+function chips(){/* Header level/streak chips and titles (including Paper Hands) are retired. XP, badges and streak stay in S and still sync. */}
 
 const MENU=document.querySelector('details.menu');
 if(MENU){document.addEventListener('click',e=>{if(!MENU.contains(e.target))MENU.open=false});document.addEventListener('keydown',e=>{if(e.key==='Escape')MENU.open=false})}
@@ -275,8 +269,8 @@ const gis=()=>new Promise((ok,no)=>{if(window.google&&google.accounts)return ok(
 function modal(){
   const m=document.createElement('div');m.className='modal';
   m.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Account"><h2>'+(ME?'Your account':'Sign in to sync')+'</h2>'+(ME
-    ?'<p class="t">Signed in as <b>'+esc(ME)+'</b>. Your journal, XP and streak sync across your devices. Data stays on this device after you sign out.</p><button class="lock" id="so">Sign out</button><p class="hint"><a href="#" id="del">Delete my account and synced data</a></p>'
-    :'<p class="t">Optional. Every tool works without an account. Sign in to keep your journal, XP and streak across devices.</p><div id="gbtn"></div><p class="hint" id="gmsg"></p>')
+    ?'<p class="t">Signed in as <b>'+esc(ME)+'</b>. Your journal syncs across your devices. Data stays on this device after you sign out.</p><button class="lock" id="so">Sign out</button><p class="hint"><a href="#" id="del">Delete my account and synced data</a></p>'
+    :'<p class="t">Optional. Every tool works without an account. Sign in to keep your journal across devices.</p><div id="gbtn"></div><p class="hint" id="gmsg"></p>')
     +'<p class="hint"><a href="#" id="cl">Close</a></p></div>';
   document.body.appendChild(m);
   const close=()=>{m.remove();document.removeEventListener('keydown',esc2)},esc2=e=>{if(e.key==='Escape')close()};
@@ -297,7 +291,7 @@ function modal(){
 }
 (async()=>{try{
   const c=await fetch('/api/config');if(!c.ok)return;CFG=await c.json();if(!CFG.clientId)return;
-  btn=document.createElement('button');btn.className='chip';btn.id='acct';btn.onclick=modal;document.querySelector('.chips').appendChild(btn);
+  btn=document.createElement('button');btn.className='chip';btn.id='account-btn';btn.type='button';btn.onclick=modal;document.querySelector('.chips').appendChild(btn);
   const me=await api('GET','me');if(me.ok)ME=(await me.json()).email;
   setBtn();if(ME)pull();const jh=document.querySelector('#jl+.hint');if(jh)jh.textContent='Saved in this browser. Sign in to sync across devices.';
 }catch(e){}})();
